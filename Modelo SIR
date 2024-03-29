@@ -1,0 +1,37 @@
+# Modelo SIR pelo método de Euler Explícito
+
+# Definindo as variáveis
+N = 100
+I0 = 1
+R0 = 0
+S0 = N - I0 - R0
+gama = 0.5
+beta = 10           # Alto contágio
+tf = 20
+h = 0.01
+
+# Inicializando as variáveis e listas
+I = I0
+R = R0
+S = S0
+t = 0
+
+S_list = []
+I_list = []
+R_list = []
+t_list = []
+
+while(t<tf):
+  S_novo = S - beta/N * S*I *  h
+  I_novo = I + (beta/N * S*I - gama * I) * h
+  R_novo = R + gama*I * h
+  t += h
+
+  S = S_novo
+  R = R_novo
+  I = I_novo
+
+  S_list.append(S)
+  I_list.append(I)
+  R_list.append(R)
+  t_list.append(t)
