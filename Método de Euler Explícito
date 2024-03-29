@@ -1,0 +1,23 @@
+# Método de Euler Explícito aplicado ao Decaimento do Rubdio
+
+# Parâmetros Iniciais
+N0 = 1000         # Número Atômico do Rubídio
+t0 = 0            # Tempo ínicial: 0
+alpha = 9.24e-3   # 1/s
+tf = 1000         # Tempo final: 75s
+h = 1             # Passo: 1s
+n = (tf-t0)/h
+
+# Inicializando as variáveis
+t = t0
+N = N0
+
+N_list = [N0]
+t_list = [t0]
+
+while(t<tf):
+  N = N - alpha * N * h
+  t = t + h
+
+  N_list.append(N)
+  t_list.append(t)
