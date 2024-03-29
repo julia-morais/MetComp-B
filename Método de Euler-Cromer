@@ -1,0 +1,42 @@
+# Método de Euler Cromer aplicado ao Sistema de Massa Mola
+
+# Parâmetros Iniciais
+x0 = 2.0     # Posição inicial
+v0 = 1.0     # Velocidade inicial
+t0 = 0       # Instante inicial
+w0_2 = 3.0   # Quadrado da Velocidade angular inicial
+h = 0.01     # Passo
+tf = 100     # Instante Final
+m = 1        # Massa
+k = 3        # Constante Elástica da Mola
+E0 = (k*x0**2)/2 + (m*v0**2)/2 # Energia Mecânica inicial do Sistema
+
+def acc(x, w):
+  "Função que retorna o valor da aceleração para dado x."
+  return -w*x
+
+# Inicializa as variáveis
+
+t = t0
+v = v0
+x = x0
+E = E0
+
+# Definir as listas
+
+t_list = []
+v_list = []
+x_list = []
+E_list = []
+
+while (t<tf):
+  v_ant = v
+  v = v + acc(x,w0_2) * h
+  E = (((k*x**2)/2 + (m*v_ant**2)/2) - E0) / E0
+  x = x + v * h
+  t += h
+
+  t_list.append(t)
+  v_list.append(v)
+  x_list.append(x)
+  E_list.append(E)
